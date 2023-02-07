@@ -17,7 +17,7 @@ public class WordleGame{
 
     public WordleGame() {
         wordleWord = wordleAnswerList.get((int)(Math.random() * wordleAnswerList.size()));
-        
+        System.out.println(wordleWord);
         for(int i = 0; i < letters.length; i++) {
         alphabet.add(letters[i]);
         }
@@ -32,11 +32,12 @@ public class WordleGame{
      */
     public String getGuess() {
         String guess = "";
-        if(numGuesses <= maxGuesses && validate(guess)) {
+        if(numGuesses <= maxGuesses && !validate(guess)) {
             numGuesses++;
             System.out.println("What is your guess? ");
             guess = input.nextLine();
             System.out.println("Guess " + numGuesses + ": " + guess);
+            checkWordle(guess);
         }
         return guess;
     }
